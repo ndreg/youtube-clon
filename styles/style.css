@@ -35,14 +35,32 @@
 
   /* OTROS */
   --header-height: 56px;
+  --sidebar-width: 240px;
   --z-tooltip: 25;
   --z-fixed: 100;
   --border-radius: 0.25rem;
   --transition-time: 0.25s;
+
+  /* SCROLL */
+  --scroll-size: 16px;
+  --scroll-bg: transparent;
+  --scroll-radius: 8px;
+  --scroll-padding: 4px;
+  --thumb-bg: var(--gray-color);
+  --thumb-bg-alt: var(--gray-color-alt);
 }
 
 body {
   font-family: var(--body-font);
+  background: var(--bg-color-alt);
+}
+
+hr {
+  --spacing: 0.75rem;
+  border: none;
+  border: 1px solid var(--border-color);
+  margin-bottom: var(--spacing);
+  margin-top: var(--spacing);
 }
 
 h1,
@@ -74,9 +92,34 @@ img {
   gap: 0.5rem;
 }
 
+/* --- SCROLL ---- */
+.scroll::-webkit-scrollbar {
+  width: var(--scroll-size);
+  height: var(--scroll-size);
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  border: var(--scroll-padding) solid transparent;
+  background-clip: content-box;
+  background-color: var(--thumb-bg);
+  border-radius: var(--scroll-radius);
+}
+
+.scroll::-webkit-scrollbar-thumb:hover {
+  background-color: var(--thumb-bg-alt);
+}
+
+.scroll:not(body)::-webkit-scrollbar-thumb {
+  display: none;
+}
+.scroll:not(body):hover::-webkit-scrollbar-thumb {
+  display: block;
+}
+
 /* ---- CABECERA PRINCIPAL DEL SITIO ---- */
 .main-header {
   align-items: center;
+  background-color: var(--bg-color);
   display: flex;
   left: 0;
   position: fixed;
@@ -192,4 +235,97 @@ img {
   pointer-events: none;
   opacity: 0;
   z-index: var(--z-tooltip);
+}
+
+/* ---- MENU LATERAL ----*/
+.main-sidebar {
+  background-color: var(--bg-color);
+  --main-nav-padding: 0.5rem 1.5rem;
+  padding: 0.75rem 0;
+  position: fixed;
+  height: calc(100vh - var(--header-height));
+  top: var(--header-height);
+  overflow-y: auto;
+  width: var(--sidebar-width);
+}
+
+.main-nav .link {
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  font-size: var(--small-font-size);
+  padding: var(--main-nav-padding);
+  text-decoration: none;
+}
+
+.main-nav .link .icon {
+  font-size: 1.5rem;
+  color: var(--text-color-alt);
+}
+
+.main-nav .link.isActive,
+.main-nav .link:hover {
+  background-color: var(--bg-color-alt);
+}
+
+.main-nav .link.isActive .icon {
+  color: var(--accent-color);
+}
+
+/* ---- TITULO DE SECCIONES EN NAVEGACION LATERAL ----*/
+.nav-title {
+  padding: var(--main-nav-padding);
+  text-transform: uppercase;
+  color: var(--text-color-alt);
+  font-size: var(--small-font-size);
+}
+
+.main-nav .link .user-avatar,
+.main-nav .link .icon {
+  margin-right: 1.5rem;
+}
+
+.main-nav .link .user-avatar {
+  --size: 1.5rem;
+}
+
+.main-nav .link.isNew::after,
+.main-nav .link.isLive::after {
+  font-family: var(--icon-font);
+  margin-left: auto;
+}
+
+.main-nav .link.isNew::after {
+  content: "\e91b";
+  color: hsl(214.1, 94.5%, 42.7%);
+  font-size: 0.5rem;
+}
+.main-nav .link.isLive::after {
+  color: var(--accent-color);
+  content: "\e911";
+}
+
+/* ---- FOOTER DE LA NAVEGACION LATERAL ----*/
+.main-nav-footer {
+  padding: var(--main-nav-padding);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.main-nav-footer .container {
+  font-size: var(--smaller-font-size);
+}
+
+.main-nav-footer .link-footer {
+  line-height: 1.4;
+  text-decoration: none;
+  margin-right: 0.24rem;
+  font-weight: var(--font-bold);
+  color: var(--text-color-alt);
+}
+
+.main-nav-footer .copyright {
+  font-size: var(--smaller-font-size);
+  color: var(--text-color-alt);
+  opacity: 0.5;
 }
