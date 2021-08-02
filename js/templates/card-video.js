@@ -1,5 +1,5 @@
 export const cardVideo = (data) => `
-    <a href="/video.html"
+<a href="./pages/video.html"
     class="cover">
     <img class="image"
       src=${data.cover}>
@@ -7,11 +7,11 @@ export const cardVideo = (data) => `
   </a>
   <div class="container flex">
     <div class="user-avatar">
-      <img class="image" src=${data.avatar}>
+      <img class="user-image" src=${data.avatar}>
     </div>
     <div class="content">
       <h3 class="title">
-        <a href="/video.html">#EDpodcast - 5: ¿Qué es el testing de software y cómo hacerlo? 🐞</a>
+        <a href="./pages/video.html">#EDpodcast - 5: ¿Qué es el testing de software y cómo hacerlo? 🐞</a>
       </h3>
       <a href="#">EDteam</a>
       <p class="video-information">
